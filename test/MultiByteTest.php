@@ -32,13 +32,17 @@ class MultiByteTest extends TestCase
 
     public function testWordWrapTriggersDeprecatedError()
     {
-        $this->expectExceptionMessage("This method is deprecated, please use 'Laminas\Stdlib\StringUtils::getWrapper(<charset>)->wordWrap");
+        $this->expectExceptionMessage(
+            "This method is deprecated, please use 'Laminas\Stdlib\StringUtils::getWrapper(<charset>)->wordWrap"
+        );
         $line = Text\MultiByte::wordWrap('äbüöcß', 2, ' ', true);
     }
 
     public function testStrPadTriggersDeprecatedError()
     {
-        $this->expectExceptionMessage("This method is deprecated, please use 'Laminas\Stdlib\StringUtils::getWrapper(<charset>)->strPad");
+        $this->expectExceptionMessage(
+            "This method is deprecated, please use 'Laminas\Stdlib\StringUtils::getWrapper(<charset>)->strPad"
+        );
         $text = Text\MultiByte::strPad('äääöö', 2, 'ö');
     }
 }
