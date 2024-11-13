@@ -43,7 +43,7 @@ composer require laminas/laminas-text
 
 ## Documentation
 
-Browse the documentation online at <https://docs.laminas.dev/laminas-text/>
+Browse the documentation online at https://docs.laminas.dev/laminas-text/
 
 ## Support
 
