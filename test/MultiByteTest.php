@@ -12,15 +12,27 @@ use PHPUnit\Framework\TestCase;
  */
 class MultiByteTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        set_error_handler(static function (int $errno, string $errstr): never {
+            throw new \Exception($errstr, $errno);
+        }, E_USER_DEPRECATED);
+    }
+
+    protected function tearDown(): void
+    {
+        restore_error_handler();
+    }
+
     public function testWordWrapTriggersDeprecatedError()
     {
-        $this->expectDeprecation();
+        $this->expectExceptionMessage("This method is deprecated, please use 'Laminas\Stdlib\StringUtils::getWrapper(<charset>)->wordWrap");
         $line = Text\MultiByte::wordWrap('äbüöcß', 2, ' ', true);
     }
 
     public function testStrPadTriggersDeprecatedError()
     {
-        $this->expectDeprecation();
+        $this->expectExceptionMessage("This method is deprecated, please use 'Laminas\Stdlib\StringUtils::getWrapper(<charset>)->strPad");
         $text = Text\MultiByte::strPad('äääöö', 2, 'ö');
     }
 }
